@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Thoyizerh, My Heartbeat ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Georgia", serif;
+      background: linear-gradient(135deg, #fff4f0, #ffe4e1);
+      color: #2c3e50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .welcome-card {
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 3px solid #FF6F91;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s ease;
+    }
+
+    .welcome-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .welcome-card::before {
+      content: "🥹";
+      font-size: 200px;
+      color: rgba(255,111,145,0.08);
+      position: absolute;
+      top: -40px;
+      right: -20px;
+      transform: rotate(-10deg);
+      z-index: 0;
+    }
+
+    .welcome-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #FF6F91;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .welcome-text {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #555;
+    }
+
+    .start-button {
+      background: #FF6F91;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255,111,145,0.3);
+    }
+
+    .start-button:hover {
+      background: #e65a7c;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,111,145,0.4);
+    }
+
+    .letter-card {
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 3px solid #FF6F91;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      display: none;
+    }
+
+    .letter-card::before {
+      content: "🥹";
+      font-size: 200px;
+      color: rgba(255,111,145,0.08);
+      position: absolute;
+      top: -40px;
+      right: -20px;
+      transform: rotate(-10deg);
+      z-index: 0;
+    }
+
+    .letter-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .slide {
+      margin: 20px 0;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease;
+      background: #fafafa;
+    }
+
+    .slide img:hover {
+      transform: scale(1.02);
+    }
+
+    .message {
+      margin-top: 25px;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: #2c3e50;
+      min-height: 80px;
+      padding: 15px;
+      background: rgba(255,111,145,0.08);
+      border-radius: 15px;
+      transition: all 0.5s ease;
+      font-style: italic;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      color: #FF6F91;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    /* Floating hearts animation */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      color: #FF6F91;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      from { 
+        transform: translateY(100vh) scale(0.8) rotate(0deg); 
+        opacity: 1; 
+      }
+      to { 
+        transform: translateY(-10vh) scale(1.5) rotate(360deg); 
+        opacity: 0; 
+      }
+    }
+
+    /* Progress indicator */
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: #fccbd6;
+      border-radius: 3px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #FF6F91;
+      border-radius: 3px;
+      transition: width 5s linear;
+    }
+
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .nav-button {
+      background: #FF6F91;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background: #e65a7c;
+      transform: translateY(-2px);
+    }
+
+    .nav-button:disabled {
+      background: #fccbd6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-card" id="welcome-card">
+      <div class="welcome-content">
+        <h1>To the One Who Owns My Heart 🥹❤️</h1>
+        <p class="welcome-text">My Dearest Thoyizerh,<br>
+        Every moment with you feels like a beautiful dream.<br>
+        This letter holds all the love I have for you.</p>
+        <button class="start-button" id="start-button">Open My Heart</button>
+      </div>
+    </div>
+
+    <div class="letter-card" id="letter-card">
+      <div class="letter-content">
+        <h1>For My Beautiful Thoyizerh 💕</h1>
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="slide">
+          <img id="slide-img" src="" alt="Thoyizerh">
+        </div>
+        <div class="message" id="slide-msg"></div>
+        <div class="nav-buttons">
+          <button class="nav-button" id="prev-button" disabled>Previous</button>
+          <button class="nav-button" id="next-button">Next</button>
+        </div>
+        <div class="signature">Forever Yours, Always ❤️</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating hearts -->
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    // Images for Thoyizerh with heartfelt captions - no distance mentions
+    const images = [
+      {
+        src: "https://i.postimg.cc/sXwgdhXV/IMG-20260217-WA0027.jpg",
+        msg: "Ngyabonga ngokungithemba ngothando lwakho Thoyizerh ❤️🥹✨"
+      },
+      {
+        src: "https://i.postimg.cc/Jh3hxgCn/IMG-20260217-WA0026.jpg",
+        msg: "ubuhle bakho buyangijabulisa impela inhliziyo yami isendaweni efanele❤️🥹"
+      },
+      {
+        src: "https://i.postimg.cc/wTP3jLkX/IMG-20260217-WA0030.jpg",
+        msg: "You are the most precious treasure in my life, my love 💎"
+      },
+      {
+        src: "https://i.postimg.cc/NFCFTHvB/IMG-20260217-WA0025.jpg",
+        msg: "ukuba nawe Thoyizerh kuyangijabulisa ngenhliziyo yami yonke🥹❤️"
+      },
+      {
+        src: "https://i.postimg.cc/bJH2Grvy/IMG-20251214-WA0029.jpg",
+        msg: "Ngyakuthanda ngenhliziyo yami yonke, sthandwa sami 👑❤️"
+      },
+      {
+        src: "https://i.postimg.cc/Nj6YvHCG/IMG-20260217-WA0024.jpg",
+        msg: "Your smile lights up my whole world, makes everything better 🌹"
+      },
+      {
+        src: "https://i.postimg.cc/qRRdKZk9/IMG-20260217-WA0028.jpg",
+        msg: "Every single day I fall more in love with you, Thoyizerh 🥹❤️"
+      },
+      {
+        src: "https://i.postimg.cc/XqBSHGBg/IMG-20260217-WA0029.jpg",
+        msg: "sohlezi sisonke🥹❤️"
+      }
+    ];
+
+    let currentSlide = 0;
+    const slideImg = document.getElementById("slide-img");
+    const slideMsg = document.getElementById("slide-msg");
+    const progressBar = document.getElementById("progress-bar");
+    const welcomeCard = document.getElementById("welcome-card");
+    const letterCard = document.getElementById("letter-card");
+    const startButton = document.getElementById("start-button");
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+    let slideInterval;
+
+    // Initialize the letter
+    function initLetter() {
+      welcomeCard.style.display = 'none';
+      letterCard.style.display = 'block';
+      showSlide(currentSlide);
+      startSlideShow();
+    }
+
+    // Show specific slide
+    function showSlide(index) {
+      slideImg.src = images[index].src;
+      slideMsg.innerText = images[index].msg;
+      currentSlide = index;
+      
+      // Update navigation buttons
+      prevButton.disabled = index === 0;
+      nextButton.disabled = index === images.length - 1;
+      
+      // Reset and start progress bar
+      progressBar.style.width = '0%';
+      setTimeout(() => {
+        progressBar.style.width = '100%';
+      }, 50);
+    }
+
+    // Start slideshow with 5 second interval
+    function startSlideShow() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(() => {
+        let nextSlide = currentSlide + 1;
+        if (nextSlide >= images.length) nextSlide = 0;
+        showSlide(nextSlide);
+      }, 5000); // 5 seconds
+    }
+
+    // Navigation functions
+    function nextSlide() {
+      if (currentSlide < images.length - 1) {
+        showSlide(currentSlide + 1);
+        startSlideShow();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        showSlide(currentSlide - 1);
+        startSlideShow();
+      }
+    }
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.getElementById("hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    // Event listeners
+    startButton.addEventListener('click', initLetter);
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
+
+    // Initialization
+    setInterval(createHeart, 700);
+  </script>
+</body>
+</html>
